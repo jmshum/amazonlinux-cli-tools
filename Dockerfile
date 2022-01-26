@@ -16,13 +16,20 @@ RUN yum update -y && \
   yum install -y \
   python3 \
   vim \
+  wget \
+  unzip \
+  less \
   groff && \
   yum clean all && \
   rm -rf /var/cache/yum
 
-# Install AWS CLI
-RUN pip3 install awscli
+# Install AWS CLI v2
+RUN wget https://awscli.amazonaws.com/awscli-exe-linux-aarch64.zip -O awscliv2.zip && \
+  unzip awscliv2.zip && \
+  ./aws/install
 
 # Install AWS ECS-CLI
-RUN curl -o /usr/local/bin/ecs-cli https://amazon-ecs-cli.s3.amazonaws.com/ecs-cli-linux-amd64-latest && \
+RUN curl -Lo /usr/local/bin/ecs-cli https://amazon-ecs-cli.s3.amazonaws.com/ecs-cli-linux-arm64-latest && \
   chmod +x /usr/local/bin/ecs-cli
+
+WORKDIR /root
