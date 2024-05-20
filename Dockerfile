@@ -4,7 +4,7 @@
 #   docker image build -t jmshum/amazonlinux-cli-tools . 
 #   docker buildx build --platform linux/amd64,linux/arm64 -t jmshum/amazonlinux-cli-tools --push . 
 
-## Run Example:
+## Run Example::
 #   docker container run --rm -it jmshum/amazonlinux-cli-tools bash
 
 ## Configure AWS CLI:
